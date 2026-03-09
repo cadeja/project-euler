@@ -1,3 +1,9 @@
+"""
+Find the thirteen adjacent digits in the 1000-digit number that
+have the greatest product. What is the value of this product?
+"""
+
+
 def main():
     digit = "73167176531330624919225119674426574742355349194934\
 96983520312774506326239578318016984801869478851843\
@@ -21,8 +27,13 @@ def main():
 71636269561882670428252483600823257530420752963450"
 
     res = 0
-    for i in range(0, len(digit) - 12):
-        x = digit[i : i + 13]
+    n_adjacent = 13
+    for i in range(0, len(digit) - n_adjacent + 1):
+        x = digit[i : i + n_adjacent]
+
+        # if any of the digits is 0, skip
+        if "0" in x:
+            continue
 
         product = 1
         for n in x:
